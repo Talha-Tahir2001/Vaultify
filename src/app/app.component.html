@@ -1,0 +1,23 @@
+<!-- <div class="absolute inset-0 -z-10 h-full w-full [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#7c3aed_100%)]"></div> -->
+<div>
+  @if (isSignUpPage() || isLoginPage()) {
+    <router-outlet></router-outlet>
+  }
+  @else {
+    @if (isHomePage()) {
+      <div class="relative">
+        <app-navbar></app-navbar>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <app-home></app-home>
+          <app-features></app-features>
+        </div>
+        <app-about></app-about>
+      </div> 
+    } 
+    @else {
+              
+        <app-site-list></app-site-list>        
+      
+    }
+  }
+</div>
