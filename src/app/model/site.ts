@@ -1,6 +1,9 @@
+
 export interface Site {
-    uid: string;
-    name: string;
-    url: string;
+    siteId?: string;
+    userId: string;  
+    siteName: string;
+    siteUrl: string;
     imageUrl: string;
+    createdAt?: any;
 }
