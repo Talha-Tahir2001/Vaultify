@@ -1,0 +1,95 @@
+
+<app-navbar></app-navbar>
+
+<form
+  (ngSubmit)="submit()"
+  [formGroup]="loginForm"
+  class="max-w-md mx-auto p-6 space-y-4 border border-indigo-500 bg-white/10 backdrop-blur-lg rounded-xl shadow-lg"
+>
+  <h2 class="text-4xl font-bold mb-6 flex justify-center text-indigo-400">
+    Login
+  </h2>
+  <div>
+    <label for="email" class="block text-sm font-medium text-indigo-300"
+      >Email</label
+    >
+    <div class="mt-1">
+      <input
+        formControlName="email"
+        autocomplete="email"
+        type="email"
+        id="email"
+        name="email"
+        class="block w-full px-3 py-2 placeholder-indigo-300 text-white border border-indigo-500 rounded-md shadow-sm bg-indigo-800/50 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition"
+        placeholder="you@example.com"
+      />
+      @if (email?.touched && email?.errors?.['email']) {
+        <small class="text-red-500">Invalid Email Format</small>
+      }
+      @if (email?.touched && email?.errors?.['required']) {
+        <small class="text-red-500">Email is required</small>
+      }
+    </div>
+  </div>
+
+  <div>
+    <label for="password" class="block text-sm font-medium text-indigo-300"
+      >Password</label
+    >
+    <div class="mt-1 relative">
+      <input
+        formControlName="password"
+        [type]="inputType"
+        autocomplete="current-password"
+        id="password"
+        name="password"
+        class=" block w-full px-3 py-2 placeholder-indigo-300 text-white border border-indigo-500 rounded-md shadow-sm bg-indigo-800/50 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 transition"
+        placeholder="********"
+      />
+      <!-- <span class="pi pi-eye absolute top-1/3 right-4 -translate-y-1/2 flex items-center text-indigo-400 cursor-pointer hover:text-indigo-500 transition"></span> -->
+      <span (click)="togglePasswordVisibility()" class="pi {{eyeIcon}} absolute right-4 top-2.5 flex items-center text-indigo-400 cursor-pointer hover:text-indigo-500 transition"></span>
+      @if (password?.touched && password?.errors?.['required']) {
+        <small class="text-red-500">Password is required</small>
+      }
+    </div>
+  </div>
+
+  <div>
+    <button
+      type="submit"
+      class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500 focus:ring-offset-2 transition"
+    >
+      Login
+    </button>
+  </div>
+  <div class="text-center">
+    <p class="text-sm text-indigo-300">
+      Don't have an account?
+      <a
+        routerLink="/signup"
+        routerLinkActive="router-link-active"
+        class="text-indigo-400 font-bold hover:text-indigo-500 transition cursor-pointer"
+        >Sign Up</a
+      >
+    </p>
+  </div>
+  <!-- <div class="flex justify-center items-center space-x-3">
+    <hr class="flex-grow border-indigo-500" />
+    <span class="text-sm text-indigo-300">OR</span>
+    <hr class="flex-grow border-indigo-500" />
+  </div>
+  <div class="text-center">
+    <button
+      (click)="loginWithGoogle()"
+      type="button"
+      class="flex items-center justify-center w-full py-3 px-5 border border-indigo-300 rounded-lg shadow-md text-sm font-medium text-indigo-200 bg-indigo-600 hover:bg-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 transition"
+    >
+      <img
+        src="https://th.bing.com/th/id/R.01f28c2dfe2b297ec4a8e480569ba321?rik=1Q1LvXtv0pzIoQ&pid=ImgRaw&r=0"
+        alt="Login with Google"
+        class="h-6 w-10"
+      />
+      Login with Google
+    </button>
+  </div> -->
+</form>
